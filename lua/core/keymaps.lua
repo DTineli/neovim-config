@@ -17,3 +17,5 @@ vim.keymap.set('n', '<C-p>', function()
   vim.cmd 'vsplit'
   vim.lsp.buf.definition()
 end)
+
+vim.keymap.set('n', '<leader>bd', ':bd<CR>')
