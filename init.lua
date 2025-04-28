@@ -1,29 +1,5 @@
--- Configuracoes iniciais basicas
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-vim.g.have_nerd_font = true
-vim.opt.number = true
-vim.opt.relativenumber = true
-
--- mesmo copy pasta
-vim.schedule(function()
-  vim.opt.clipboard = 'unnamedplus'
-end)
-vim.opt.breakindent = true
--- aquela linha cinza, nao sei se quero ainda 
-vim.opt.cursorline = false
--- save undo history
-vim.opt.undofile = true
--- Clear highlights on search when pressing <Esc> in normal mode
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
--- Diagnostic keymaps
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
-
--- move painel no ctrl+hjkl
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+require('core.options')
+require('core.keymaps')
 
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
@@ -36,5 +12,22 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Set up the Lazy plugin manager
+local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
+  local out = vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
+  if vim.v.shell_error ~= 0 then
+    error('Error cloning lazy.nvim:\n' .. out)
+  end
+end
+vim.opt.rtp:prepend(lazypath)
+
+require('lazy').setup {
+    require('plugins.treesitter'),
+    require('plugins.telescope'),
+    require('plugins.autocompletation'),
+    require('plugins.lsp'),
+}
 
 
