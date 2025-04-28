@@ -1,6 +1,7 @@
 require 'core.options'
 require 'core.keymaps'
 
+vim.g.have_nerd_font = true
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
@@ -32,5 +33,6 @@ require('lazy').setup {
   require 'plugins.lualine',
   require 'plugins.none-ls',
   require 'plugins.gitsigns',
+  require 'plugins.mini',
   require 'plugins.misc',
 }
