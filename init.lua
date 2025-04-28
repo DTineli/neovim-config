@@ -29,5 +29,7 @@ require('lazy').setup {
     require('plugins.autocompletation'),
     require('plugins.lsp'),
     require('plugins.colortheme'),
+    require('plugins.lualine'),
+    require('plugins.misc')
 }
 
