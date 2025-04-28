@@ -28,6 +28,6 @@ require('lazy').setup {
     require('plugins.telescope'),
     require('plugins.autocompletation'),
     require('plugins.lsp'),
+    require('plugins.colortheme'),
 }
-
 
