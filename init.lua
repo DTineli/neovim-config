@@ -31,7 +31,6 @@ require('lazy').setup {
   require 'plugins.lsp',
   require 'plugins.colortheme',
   require 'plugins.lualine',
-  -- require 'plugins.none-ls',
   require 'plugins.conform',
   require 'plugins.gitsigns',
   require 'plugins.mini',
