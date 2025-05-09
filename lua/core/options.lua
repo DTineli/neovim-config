@@ -2,6 +2,9 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 10
 
+-- liga o erros na linha, nao sei pq no linux tava desligado
+vim.diagnostic.config { virtual_text = true }
+
 vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus'
 end)
