@@ -19,3 +19,5 @@ vim.keymap.set('n', '<C-p>', function()
 end)
 
 vim.keymap.set('n', '<leader>bd', ':bd<CR>')
+vim.keymap.set('n', '<leader>bp', ':bp<CR>')
+vim.keymap.set('n', '<leader>bn', ':bn<CR>')

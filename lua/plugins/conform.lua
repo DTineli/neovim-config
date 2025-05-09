@@ -19,6 +19,7 @@ local opts = {
       'gofmt',
       'templ',
       'injected',
+      'htmx-lsp',
     },
   },
   format_on_save = function(bufnr)
@@ -40,32 +41,10 @@ local opts = {
   },
 }
 
-local function init()
-  local function get_level(args)
-    return args.bang and 'g' or 'b'
-  end
-  local function notify(args)
-    local level = get_level(args)
-    require('notify').notify(
-      string.format(
-        'Auto formatting %s %s',
-        vim[level].disable_autoformat and 'enabled' or 'disabled',
-        level == 'b' and string.format('for buffer id: %s', vim.api.nvim_get_current_buf()) or 'globally'
-      ),
-      vim.log.levels.INFO,
-      ---@diagnostic disable-next-line: missing-fields
-      {
-        title = 'conform.nvim formatting',
-      }
-    )
-  end
-end
-
 return {
   'stevearc/conform.nvim',
   event = { 'BufWritePre' },
   opts = opts,
   cmd = { 'ConformInfo' },
   keys = {},
-  init = init,
 }
