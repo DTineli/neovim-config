@@ -13,9 +13,17 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>')
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>')
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>')
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>')
-vim.keymap.set('n', '<C-g', function()
+vim.keymap.set('n', '<C-g>', function()
   vim.cmd 'vsplit'
   vim.lsp.buf.definition()
+end)
+
+vim.keymap.set('n', '<leader>of', function()
+  vim.cmd 'Sex!'
+end)
+
+vim.keymap.set('n', '<leader>v', function()
+  vim.cmd 'vsplit'
 end)
 
 vim.keymap.set('n', '<leader>bd', ':bd<CR>')
